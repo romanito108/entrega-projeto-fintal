@@ -18,8 +18,8 @@ const ItemList = ({ produtos }) => {
           key={produto.id}
           to={`/item/${produto.id}`} 
           style={{
-            textDecoration: "none", // Remover sublinhado do link
-            color: "inherit", // Herda a cor do texto
+            textDecoration: "none", 
+            color: "inherit", 
           }}
         >
           <div
