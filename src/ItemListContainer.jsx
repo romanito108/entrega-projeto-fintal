@@ -15,7 +15,7 @@ const ItemListContainer = () => {
       // Adicionando a propriedade 'stock' aos produtos
       const produtosComEstoque = data.map(item => ({
         ...item,
-        stock: 10 // Você pode personalizar o estoque de cada produto conforme necessário
+        stock: 10 
       }));
       const filteredItems = id ? produtosComEstoque.filter(item => item.categoryId === parseInt(id)) : produtosComEstoque;
       setProdutos(filteredItems);
