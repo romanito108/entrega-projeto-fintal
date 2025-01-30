@@ -39,8 +39,8 @@ const ItemListContainer = () => {
               <p>{produto.description}</p>
               <p>Preço: R${produto.price}</p>
               <ItemCount 
-                stock={produto.stock}  // Passando o estoque para o ItemCount
-                initial={1}  // Inicia o contador com 1
+                stock={produto.stock} 
+                initial={1}  
                 onAdd={(quantity) => handleAddToCart(quantity, produto.id)}  
               />
             </div>
