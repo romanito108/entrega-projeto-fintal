@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; 
 import mockFetchItems from "./mock"; 
 import ItemList from "./ItemList";
-import ItemCount from "./ItemCount";  // Importe o ItemCount
+import ItemCount from "./ItemCount";  
 
 const ItemListContainer = () => {
   const { id } = useParams(); 
@@ -41,7 +41,7 @@ const ItemListContainer = () => {
               <ItemCount 
                 stock={produto.stock}  // Passando o estoque para o ItemCount
                 initial={1}  // Inicia o contador com 1
-                onAdd={(quantity) => handleAddToCart(quantity, produto.id)}  // Passa a quantidade e o id do produto
+                onAdd={(quantity) => handleAddToCart(quantity, produto.id)}  
               />
             </div>
           ))}
