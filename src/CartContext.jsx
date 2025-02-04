@@ -1,6 +1,6 @@
-import React, { createContext, useState, useContext } from 'react'; // Adicione a importação do createContext
+import React, { createContext, useState, useContext } from 'react'; 
 
-const CartContext = createContext(); // Agora createContext está definido
+const CartContext = createContext(); 
 
 export const useCart = () => useContext(CartContext);
 
