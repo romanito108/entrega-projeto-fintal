@@ -4,9 +4,11 @@ import ItemListContainer from "./ItemListContainer";
 import ItemDetailContainer from "./ItemDetailContainer"; 
 import Menu from './Menu'; 
 import "./App.css";
+import { CartProvider } from "./CartContext";
 
 function App() {
   return (
+    <CartProvider>
     <Router>
       <div className="App">
         <Menu /> 
@@ -17,6 +19,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </CartProvider>
   );
 }
 
