@@ -1,44 +1,37 @@
-import React, { useState } from 'react';
-import { useCart } from './CartContext';
+import React, { useState } from "react";
+import { useCart } from "./CartContext";
+import { Link } from "react-router-dom";
 
-function ItemDetail({ item }) {
-  const { addItem } = useCart();
+const ItemDetail = ({ item }) => {
+  const { addItem, totalItems } = useCart();
   const [quantity, setQuantity] = useState(1);
 
-  const handleQuantityChange = (e) => {
-    const value = Number(e.target.value);
-    if (!isNaN(value) && value >= 1) {
-      setQuantity(value);
-    }
-  };
-
-  const handleBuy = () => {
-    addItem(item, quantity);
-    alert(`${item.title} foi adicionado ao carrinho!`);
-  };
+ 
+  const showFinishButton = totalItems() > 0;
 
   return (
     <div>
       <h2>{item.title}</h2>
-      <img src={item.pictureUrl} alt={item.title} style={{ width: '300px' }} />
       <p>{item.description}</p>
-      <p><strong>Preço:</strong> R$ {item.price}</p>
-      <div>
-        <label>
-          Quantidade:
-          <button onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>-</button>
-          <input
-            type="number"
-            value={quantity}
-            min="1"
-            onChange={handleQuantityChange}
-          />
-          <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
-        </label>
-      </div>
-      <button onClick={handleBuy}>Adicionar ao Carrinho</button>
+      <p>Preço: R$ {item.price.toFixed(2)}</p>
+      <input
+        type="number"
+        value={quantity}
+        min="1"
+        onChange={(e) => setQuantity(parseInt(e.target.value))}
+      />
+      <button onClick={() => addItem(item, quantity)}>Adicionar ao Carrinho</button>
+
+     
+      {showFinishButton && (
+        <div>
+          <Link to="/cart">
+            <button>Finalizar minha compra</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default ItemDetail;

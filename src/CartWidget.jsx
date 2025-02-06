@@ -1,14 +1,23 @@
-import react from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import React from "react";
+import { useCart } from "./CartContext";
+import { Link } from "react-router-dom";
 
 const CartWidget = () => {
-    return (
-        <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-            <FaShoppingCart size={24} />
-        </div>
-    );
+  const { cart, totalItems } = useCart();
+
+  return (
+    <div>
+
+      {cart.length > 0 && (
+        <Link to="/cart">
+          <div>
+            <span>Carrinho</span>
+            <span>{totalItems()}</span> 
+          </div>
+        </Link>
+      )}
+    </div>
+  );
 };
-
-
 
 export default CartWidget;

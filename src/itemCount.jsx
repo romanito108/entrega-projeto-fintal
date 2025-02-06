@@ -12,7 +12,7 @@ function ItemCount({ stock, initial, onAdd }) {
 
   const handleDecrement = () => {
     if (count > 1) {  
-      setCount(count - 1); // Decrementa a quantidade
+      setCount(count - 1); 
     }
   };
 

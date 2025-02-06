@@ -20,6 +20,7 @@ const ItemList = ({ produtos }) => {
           style={{
             textDecoration: "none", 
             color: "inherit", 
+            transition: "transform 0.3s ease-in-out", 
           }}
         >
           <div
@@ -31,12 +32,20 @@ const ItemList = ({ produtos }) => {
               flex: "1 1 calc(33.333% - 32px)", 
               boxSizing: "border-box",
               textAlign: "center",
+              transition: "transform 0.3s ease-in-out", 
             }}
+            onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img
               src={produto.pictureUrl}
               alt={produto.title}
-              style={{ width: "100%", borderRadius: "8px" }}
+              style={{
+                width: "100%",
+                height: "200px", 
+                objectFit: "cover", 
+                borderRadius: "8px",
+              }}
             />
             <h2>{produto.title}</h2>
             <p>{produto.description}</p>

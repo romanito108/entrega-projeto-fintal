@@ -1,24 +1,25 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 import ItemListContainer from "./ItemListContainer"; 
 import ItemDetailContainer from "./ItemDetailContainer"; 
-import Menu from './Menu'; 
+import Menu from "./Menu"; 
+import Cart from "./Cart";
+import { CartProvider } from "./CartContext"; 
 import "./App.css";
-import { CartProvider } from "./CartContext";
 
 function App() {
   return (
     <CartProvider>
-    <Router>
-      <div className="App">
-        <Menu /> 
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} /> 
-          <Route path="/category/:id" element={<ItemListContainer />} /> 
-          <Route path="/item/:id" element={<ItemDetailContainer />} /> 
-        </Routes>
-      </div>
-    </Router>
+      <Router>
+        <div className="App">
+          <Menu />
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/category/:id" element={<ItemListContainer />} />
+            <Route path="/item/:id" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />} />  
+          </Routes>
+        </div>
+      </Router>
     </CartProvider>
   );
 }
