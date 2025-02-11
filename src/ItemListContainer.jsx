@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "./firebaseConfig"; 
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { useCart } from "./CartContext"; // Importa o contexto do carrinho
-
+import { useCart } from "./CartContext";
 const ItemListContainer = () => {
   const { categoryId } = useParams();
   const { addItem } = useCart();
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [quantities, setQuantities] = useState({}); // Estado para armazenar a quantidade de cada produto
+  const [quantities, setQuantities] = useState({}); 
 
   useEffect(() => {
     const fetchItems = async () => {
