@@ -18,11 +18,10 @@ import "./Menu.css";
 
 const pages = [
   { name: "Produtos", path: "/" },
-  { name: "Categoria 1", path: "/category/1" },
-  { name: "Categoria 2", path: "/category/2" },
+  { name: "Booster Pokémon", path: "/category/1" },
+  { name: "Booster Magic", path: "/category/2" },
   { name: "Carrinho", path: "/cart" }
 ];
-
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const isMobile = useMediaQuery("(max-width:600px)"); // Verificando se é mobile

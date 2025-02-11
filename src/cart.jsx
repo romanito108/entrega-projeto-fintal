@@ -2,8 +2,13 @@ import React, { useContext } from "react";
 import { useCart } from "./CartContext";
 import { Link } from "react-router-dom";
 
+
+
+
 const Cart = () => {
-  const { cart, removeItem, clearCart, totalPrice, totalItems } = useCart();
+  const { cart, removeItem, clear, totalItems } = useCart();
+
+  const totalPrice = cart.reduce((acc, item) => acc + ((item.Preço || 0) * (item.quantity || 1)), 0);
 
   if (cart.length === 0) {
     return (
@@ -16,28 +21,17 @@ const Cart = () => {
 
   return (
     <div>
-      <h2>Meu carrinho</h2>
-
+      <h2>Seu Carrinho</h2>
       <ul>
         {cart.map((item) => (
           <li key={item.id}>
-            <p>
-              {item.title} - {item.quantity} x R${item.price}
-            </p>
+         {item.Título} - {item.quantity}x - R$ {(item.Preço * item.quantity).toFixed(2)}
             <button onClick={() => removeItem(item.id)}>Remover</button>
           </li>
         ))}
       </ul>
-
-      <h3>Total: R$ {totalPrice().toFixed(2)}</h3>
-      <h4>Total de itens: {totalItems()}</h4>
-
-      <button onClick={clearCart}>Esvaziar Carrinho</button>
-
-    
-      {cart.length > 0 && (
-        <button>Finalizar minha compra</button>
-      )}
+      <p>Total: R$ {totalPrice.toFixed(2)}</p>
+      <button onClick={clear}>Limpar Carrinho</button>
     </div>
   );
 };

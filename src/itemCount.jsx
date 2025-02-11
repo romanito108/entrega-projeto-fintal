@@ -1,45 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-function ItemCount({ stock, initial, onAdd }) {
-  const [count, setCount] = useState(initial); 
-  const [isDisabled, setIsDisabled] = useState(false); 
+const ItemCount = ({ stock, initial, onAdd }) => {
+  const [quantity, setQuantity] = useState(initial);
 
-  const handleIncrement = () => {
-    if (count < stock) { 
-      setCount(count + 1); 
+  const increaseQuantity = () => {
+    if (quantity < stock) {
+      setQuantity(quantity + 1);
     }
   };
 
-  const handleDecrement = () => {
-    if (count > 1) {  
-      setCount(count - 1); 
-    }
-  };
-
-  const handleAddToCart = () => {
-    if (count <= stock && stock > 0) { 
-      onAdd(count);  
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
     }
   };
 
   return (
-    <div>
-      <button onClick={handleDecrement} disabled={count <= 1}>-</button>
-      <span>{count}</span>
-      <button onClick={handleIncrement} disabled={count >= stock}>+</button>
-      
-      <div>
-        <button 
-          onClick={handleAddToCart}
-          disabled={stock === 0 || count === 0}  
-        >
-          Adicionar ao Carrinho
-        </button>
-      </div>
-
-      {stock === 0 && <p>Sem estoque disponível</p>} 
+    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      <button onClick={decreaseQuantity} disabled={quantity === 1}>
+        ➖
+      </button>
+      <span>{quantity}</span>
+      <button onClick={increaseQuantity} disabled={quantity === stock}>
+        ➕
+      </button>
+      <button onClick={() => onAdd(quantity)}>🛒 Adicionar ao Carrinho</button>
     </div>
   );
-}
+};
 
 export default ItemCount;
