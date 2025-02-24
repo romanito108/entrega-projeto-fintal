@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "./firebaseConfig"; 
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { useCart } from "./CartContext"; // Importa o contexto do carrinho
+import { useCart } from "./CartContext";
 
 const ItemListContainer = () => {
+  console.log("Renderizando ItemListContainer");
   const { categoryId } = useParams();
   const { addItem } = useCart();
   const [produtos, setProdutos] = useState([]);
@@ -47,20 +48,17 @@ const ItemListContainer = () => {
 
   return (
     <div>
-      <h1>{categoryId ? `Produtos da Categoria ${categoryId}` : "Todos os Produtos"}</h1>
       {loading && <p>Carregando produtos...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {!loading && !error && (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px", padding: "20px" }}>
           {produtos.map((produto) => (
             <div
               key={produto.id}
               style={{
-                border: "1px solid #ddd",
-                padding: "16px",
-                borderRadius: "8px",
-                width: "calc(33% - 40px)",
-                boxSizing: "border-box",
+                border: "2px solid #ddd",
+                padding: "20px",
+                borderRadius: "5px",
                 textAlign: "center",
               }}
             >
@@ -70,10 +68,13 @@ const ItemListContainer = () => {
               <img
                 src={produto.ImagemUrl || "https://via.placeholder.com/200"}
                 alt={produto.Título}
-                style={{ width: "100%", height: "200px", objectFit: "cover", borderRadius: "8px" }}
+                style={{
+                  width: "100%",
+                  height: "250px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                }}
               />
-
-              {/* Input para selecionar quantidade */}
               <input
                 type="number"
                 min="1"
@@ -82,10 +83,8 @@ const ItemListContainer = () => {
                 onChange={(e) => handleQuantityChange(produto.id, parseInt(e.target.value))}
                 style={{ width: "60px", marginTop: "10px", textAlign: "center" }}
               />
-
-              {/* Botão para adicionar ao carrinho */}
               <button
-                 onClick={() => addItem(produto, quantities[produto.id] || 1)}
+                onClick={() => addItem(produto, quantities[produto.id] || 1)}
                 style={{
                   marginTop: "10px",
                   padding: "8px 12px",

@@ -1,0 +1,140 @@
+/* Cart.css */
+
+/* Estilo geral do container do carrinho */
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para o título do carrinho */
+  .cart-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para a lista de itens */
+  .cart-items {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Estilo para cada item do carrinho */
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para as informações do item */
+  .item-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .item-title {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .item-quantity {
+    color: #777;
+  }
+  
+  .item-price {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Estilo para o botão de remover */
+  .remove-item {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .remove-item:hover {
+    background-color: #ff1a1a;
+  }
+  
+  /* Estilo para o resumo do carrinho */
+  .cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .total-price {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Estilo para o botão de limpar carrinho */
+  .clear-cart {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .clear-cart:hover {
+    background-color: #555;
+  }
+  
+
+  .cart-empty {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .cart-empty h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .back-to-store {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .back-to-store:hover {
+    color: #0056b3;
+  }
+
+  
+.item-image {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 5px; 
+    margin-right: 10px; 
+    object-fit: cover; 
+  }
+  
+  .item-info {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+  }
