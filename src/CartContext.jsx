@@ -22,22 +22,22 @@ export const CartProvider = ({ children }) => {
     });
   };
   
-  // Remove um item pelo ID
+ 
   const removeItem = (itemId) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
   };
 
-  // Limpa o carrinho inteiro
+
   const clear = () => {
     setCart([]);
   };
 
-  // Verifica se um item já está no carrinho
+ 
   const isInCart = (id) => {
     return cart.some((item) => item.id === id);
   };
 
-  // Calcula o total de itens no carrinho
+  
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (

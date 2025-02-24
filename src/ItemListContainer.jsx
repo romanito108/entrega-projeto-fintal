@@ -11,7 +11,7 @@ const ItemListContainer = () => {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [quantities, setQuantities] = useState({}); // Estado para armazenar a quantidade de cada produto
+  const [quantities, setQuantities] = useState({}); 
 
   useEffect(() => {
     const fetchItems = async () => {
